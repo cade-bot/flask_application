@@ -105,7 +105,8 @@ pipeline {
          script {
            sh '''#!/bin/bash
                  sql_server=$(docker ps --quiet --filter name=flask_application_sql)
-                 docker exec -T "${sql_server}" bash
+                 docker exec -it "${sql_server}" bash
+                 mysql --user=root --password=password
                  create database fmadata
                  exit
                  mysql -u root -p fmadata < schema2.sql
