@@ -35,7 +35,7 @@ After I built these containers I pushed the docker images to my dockerhub regist
 ## Step 5 - Docker Swarm
 I used the docker-compose.yml file to deploy both my containers together using docker swarm. I updated my application configuration to allow the connectivity between these two containers.
 
-# Step 6 - GitHub
+## Step 6 - GitHub
 I uploaded my flask application along with my docker files to github. I did this so I can pull the applicaton during my jenkins pipeline.
 
 ## Step 7 - Jenkins
