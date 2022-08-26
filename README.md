@@ -17,8 +17,9 @@ https://drive.google.com/file/d/1fG4q24cN2jqKVqAH1xde9yTyvDKB78sk/view?usp=shari
 
 ## Project Timeline and Build Steps:
 
-## Step 1 - Create ERD diagram
+## Step 1 - Create ERD diagram and Jira Board Creation
 I created an ERD diagram using draw.io. The link below will take you to the ticket in Jira with the diagram attached. I have also attached a link to my ERD diagram on Google Drive.
+
 https://cadeqaproject.atlassian.net/browse/FMA-1?atlOrigin=eyJpIjoiODUwNTA0YzczMjExNDFhZDk2YTIwMjA3ZjhhYjkwZTUiLCJwIjoiaiJ9
 
 ## Step 2 - Create the MYSQL Docker container
