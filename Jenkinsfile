@@ -100,30 +100,30 @@ pipeline {
 //     }
 
 
-      stage('Initialising Database Schema') {
-       steps {
-         script {
-           sh '''#!/bin/bash
-                 sql_server=$(docker ps --quiet --filter name=flask_application_sql)
-                 docker exec -it "${sql_server}" bash
-                 mysql --user=root --password=password
-                 create database fmadata
-                 exit
-                 mysql -u root -p fmadata < schema2.sql
-                 exit
-           '''
-          }
-       }
-    }
+//       stage('Initialising Database Schema') {
+//        steps {
+//          script {
+//            sh '''#!/bin/bash
+//                  sql_server=$(docker ps --quiet --filter name=flask_application_sql)
+//                  docker exec -it "${sql_server}" bash
+//                  mysql --user=root --password=password
+//                  create database fmadata
+//                  exit
+//                  mysql -u root -p fmadata < schema2.sql
+//                  exit
+//            '''
+//           }
+//        }
+//     }
 
 
-     stage('Checking Containers are deployed via Docker Swarm') {
-       steps {
-         script {
-           sh 'docker ps'
-          }
-       }
-    }
+//      stage('Checking Containers are deployed via Docker Swarm') {
+//        steps {
+//          script {
+//            sh 'docker ps'
+//           }
+//        }
+//     }
 
 
   }
