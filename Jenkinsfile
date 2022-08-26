@@ -78,7 +78,7 @@ pipeline {
        steps {
          script {
            env.sql_server = sh (
-               script: 'sql_server=$(docker ps --quiet --filter name=flask_application_sql)',
+               script: 'docker ps --quiet --filter name=flask_application_sql',
                returnStdout: true
             )
         }
@@ -98,7 +98,7 @@ pipeline {
           }
        }
     }
-    
+
 
      stage('Checking Containers are deployed via Docker Swarm') {
        steps {
