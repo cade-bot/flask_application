@@ -63,8 +63,6 @@ pipeline {
      }
     }
   }
-}
-
 
      stage('Deploying Containers via Docker Swarm') {
        steps {
