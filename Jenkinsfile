@@ -104,7 +104,7 @@ pipeline {
        steps {
          script {
            sh '''#!/bin/bash
-                 sql_server1=$(docker ps --quiet --filter name=flask_application_sql)
+                 sql_server=$(docker ps --quiet --filter name=flask_application_sql)
                  docker exec -it "${sql_server}" bash
                  create database fmadata
                  exit
