@@ -10,16 +10,13 @@ pipeline {
 
 agent any {
 		stages {
-		   stage('Checkout') {
-              steps {
-                script {
-                    // The below will clone your repo and will be checked out to master branch by default.
-                    git credentialsId: 'github', url: 'https://github.com/cade-bot/flask_application'
-                     // Checkout to a specific branch in your repo.
-                     sh "git checkout main"
-          }
-       }
-    }
+		    stage ('Build docker image of Flask Application'){
+			    script {
+			    	docker_image = docker.build(registry_flask_app)
+
+				}
+			}
+		}
 
 	    	stage ('Build docker image of SQL Server' ){
 		    	script {
