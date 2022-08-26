@@ -3,9 +3,7 @@ pipeline {
         registry_flask_app = "cade360/flask_app"
 		registry_sql_server = "cade360/sql_server"
 		registryCredentials = “cade360”
-		compose_file = "./flask_application/docker-compose.yml"
-		docker_image = “”
-		HOME = “./flask_application”
+		compose_file = "docker-compose.yml"
     }
 
 agent any {
