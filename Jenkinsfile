@@ -54,15 +54,17 @@ pipeline {
 
      stage('Deploying Containers via Docker Swarm') {
        steps {
-         script {
-            try {
-               sh 'docker swarm init'
-            } catch(Exception e) {
-                 sh 'docker swarm leave --force'
-            }
-          }
-       }
+       script {
+          try {
+              sh 'docker swarm init'
+          } catch (Exception e) {
+              echo 'Exception occurred: ' + e.toString()
+              sh 'docker swarm leave --force'
+     }
     }
+  }
+}
+
 
      stage('Deploying Containers via Docker Swarm') {
        steps {
