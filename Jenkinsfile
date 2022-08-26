@@ -55,6 +55,7 @@ pipeline {
      stage('Deploying Containers via Docker Swarm') {
        steps {
          script {
+           sh 'docker swarm leave'
            sh 'docker swarm init'
            sh 'docker stack deploy --compose-file $compose_file flask_application'
            sh 'docker ps'
