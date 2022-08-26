@@ -67,8 +67,6 @@ def update(id):
             name = request.form['name']
             owner = request.form['owner']
             stable = StableModel(stableid=stableid, fighterid=fighterid, name=name, owner=owner)
-
-            db.session.add(stable)
             db.session.commit()
             return redirect(f'/data/{id}')
         return f"Stable with id = {id} Does not exist"
