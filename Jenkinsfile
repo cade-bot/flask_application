@@ -30,10 +30,24 @@ pipeline {
          script {
            withCredentials([usernamePassword(credentialsId: 'dockerhub_id', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
            sh ' docker login -u $USERNAME --password $PASSWORD'
-           }
-//            sh 'echo $dockerhub_id_PSW | docker login -u $dockerhub_id_USR --password-stdin'
+         }
+       }
+     }
+  }
+
+     stage('Build Flask App and push it to dockerhub repo') {
+       steps {
+         script {
+           sh 'docker build . -t cade360/flask_app'
+           sh 'docker push cade360/flask_app'
           }
        }
     }
+
+
+
+
+
+
   }
 }
