@@ -38,13 +38,19 @@ pipeline {
      stage('Build Flask App and push it to dockerhub repo') {
        steps {
          script {
-           sh 'docker build . -t cade360/flask_app'
-           sh 'docker push cade360/flask_app'
+           sh 'docker build . -t $registry_flask_app'
+           sh 'docker push $registry_flask_app'
           }
        }
     }
 
-
+     stage('Pulling SQL Server Container from DockerHub') {
+       steps {
+         script {
+           sh 'docker pull $registry_sql_server'
+          }
+       }
+    }
 
 
 
