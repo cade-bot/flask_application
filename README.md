@@ -3,12 +3,16 @@
 This is my fantasy MMA sports app.
 The aim of this application is to be able to create a stable (read: team) and add fighters to it. It should have CRUD functionality, allowing you to create stables, retrieve information, update stables and delete them. 
 
-## Project Documentation and Diagrams:
+## Project Documentation, Diagrams and Demo Video:
+
+
+### Demo Video:
+https://drive.google.com/file/d/1LEyQsWKBVQEmKFjHv1lMM0Mp4VufZdjB/view?usp=sharing
 
 ### ERD Diagram:
 https://drive.google.com/file/d/1Unz3YXWGuR_iYvTQGLM42tUIxbiCwr6r/view?usp=sharing
 
-### Infrastructure & CICD Diagram:
+### Infrastructure & CI/CD Diagram:
 https://drive.google.com/file/d/1yqgCKKP1wAZflpK-7yVb_te081AVIj8X/view?usp=sharing
 
 ### Project Risk Assessment:
