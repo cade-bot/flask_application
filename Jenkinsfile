@@ -74,11 +74,22 @@ pipeline {
        }
     }
 
+     stage('Set env for SQL_Server') {
+       steps {
+         script {
+           env.sql_server = sh (
+               script: 'sql_server=$(docker ps --quiet --filter name=flask_application_sql)',
+               returnStdout: true
+            )
+        }
+         echo "SQL Server Container ID: ${env.sql_server}"
+    }
+}
+
      stage('Initialising Database Schema') {
        steps {
          script {
-           sh 'sql_server=$(docker ps --quiet --filter name=flask_application_sql)'
-           sh 'docker exec -it ${sql_server} bash '
+           sh 'docker exec -it ${env.sql_server} bash '
            sh 'mysql --user=root --password=password'
            sh 'create database fmadata'
            sh 'exit'
@@ -87,6 +98,7 @@ pipeline {
           }
        }
     }
+    
 
      stage('Checking Containers are deployed via Docker Swarm') {
        steps {
