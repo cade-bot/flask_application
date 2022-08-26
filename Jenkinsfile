@@ -56,7 +56,7 @@ pipeline {
        steps {
          script {
            sh 'docker swarm leave --force'
-           sh 'service docker restart'
+           sh 'sudo service docker restart'
            sh 'docker swarm init'
            sh 'docker stack deploy --compose-file $compose_file flask_application'
            sh 'sleep 10'
