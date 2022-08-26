@@ -89,7 +89,7 @@ pipeline {
      stage('Initialising Database Schema') {
        steps {
          script {
-           sh "docker exec -it ${env.sql_server} 'bash'"
+           sh """docker exec -it ${env.sql_server} bash """
            sh 'mysql --user=root --password=password'
            sh 'create database fmadata'
            sh 'exit'
