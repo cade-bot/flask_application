@@ -55,9 +55,18 @@ pipeline {
      stage('Deploying Containers via Docker Swarm') {
        steps {
          script {
-           sh 'docker swarm leave --force'
-           sh 'sudo service docker restart'
-           sh 'docker swarm init'
+            try {
+               sh 'docker swarm init'
+            } catch(Exception e) {
+                 sh 'docker swarm leave --force'
+            }
+          }
+       }
+    }
+
+     stage('Deploying Containers via Docker Swarm') {
+       steps {
+         script {
            sh 'docker stack deploy --compose-file $compose_file flask_application'
            sh 'sleep 10'
            sh 'docker ps'
