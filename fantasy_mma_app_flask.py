@@ -60,13 +60,13 @@ def update(id):
     stable = StableModel.query.filter_by(stableid=id).first()
     if request.method == 'POST':
         if stable:
-            db.session.delete(stable)
-            db.session.commit()
-            
+            # db.session.delete(stable)
+            # db.session.commit()
+            stableid = request.form['stableid']
             fighterid = request.form['fighterid']
             name = request.form['name']
             owner = request.form['owner']
-            stable = StableModel(fighterid=fighterid, name=name, owner=owner)
+            stable = StableModel(stableid=stableid, fighterid=fighterid, name=name, owner=owner)
 
             db.session.add(stable)
             db.session.commit()
