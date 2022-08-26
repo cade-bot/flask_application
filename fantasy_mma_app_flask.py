@@ -55,39 +55,39 @@ def RetrieveSingleFighter(id):
     return f"Stable with id ={id} Does not exist"
 
 
-# @app.route('/data/<int:id>/update/', methods=['GET', 'POST'])
-# def update(id):
-#     stable = StableModel.query.filter_by(stableid=id).first()
-#     if request.method == 'POST':
-#         if stable:
-#             db.session.delete(stable)
-#             db.session.commit()
-#             stableid = request.form['stableid']
-#             fighterid = request.form['fighterid']
-#             name = request.form['name']
-#             owner = request.form['owner']
-#             stable = StableModel(stableid=stableid, fighterid=fighterid, name=name, owner=owner)
-#
-#             db.session.add(stable)
-#             db.session.commit()
-#             return redirect(f'/data/{id}')
-#         return f"Stable with id = {id} Does not exist"
-#
-#     return render_template('update.html', stable=stable)
-
 @app.route('/data/<int:id>/update/', methods=['GET', 'POST'])
 def update(id):
     stable = StableModel.query.filter_by(stableid=id).first()
-    stable.fighterid = request.form['fighterid']
-    stable.name = name = request.form['name']
-    db.session.commit()
-    
+    if request.method == 'POST':
+        if stable:
+            db.session.delete(stable)
+            db.session.commit()
+            
+            fighterid = request.form['fighterid']
+            name = request.form['name']
+            owner = request.form['owner']
+            stable = StableModel(fighterid=fighterid, name=name, owner=owner)
+
+            db.session.add(stable)
+            db.session.commit()
+            return redirect(f'/data/{id}')
+        return f"Stable with id = {id} Does not exist"
+
     return render_template('update.html', stable=stable)
 
-# user = User.query.get(5)
-# user.name = 'New Name'
-# db.session.commit()
-
+# @app.route('/data/<int:id>/update/', methods=['GET', 'POST'])
+# def update(id):
+#     stable = StableModel.query.filter_by(stableid=id).first()
+#     stable.fighterid = request.form['fighterid']
+#     stable.name = name = request.form['name']
+#     db.session.commit()
+#
+#     return render_template('update.html', stable=stable)
+#
+# # user = User.query.get(5)
+# # user.name = 'New Name'
+# # db.session.commit()
+#
 
 
 
