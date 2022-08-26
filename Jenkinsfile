@@ -13,7 +13,7 @@ pipeline {
      stage('Check Folder is there') {
        steps {
          script {
-           sh 'cd .flask_application'
+           sh 'cd ./flask_application'
            sh 'ls'
           }
        }
