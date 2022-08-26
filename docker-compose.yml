@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  web:
+    image: cade360/flask_app:latest
+    build: .
+    environment:
+      FLASK_APP: fantasy_mma_app_flask.py
+    ports:
+      - "5000:5000"
+    links:
+      - sql_server
+    network_mode: bridge
+  sql_server:
+    image: cade360/sql_server
+    command: --default-authentication-plugin=mysql_native_password
+    build: .
+    network_mode: bridge
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
