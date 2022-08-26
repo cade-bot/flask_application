@@ -57,11 +57,32 @@ pipeline {
          script {
            sh 'docker swarm init'
            sh 'docker stack deploy --compose-file $compose_file flask_application'
+           sh 'docker ps'
           }
        }
     }
 
+     stage('Initialising Database Schema') {
+       steps {
+         script {
+           sh 'sql_server=docker ps --quiet --filter "name=flask_application_sql"'
+           sh 'docker exec -it $sql_server bash '
+           sh 'mysql --user=root --password=password'
+           sh 'create database fmadata'
+           sh 'exit'
+           sh 'mysql -u root -p fmadata < schema2.sql'
+           sh 'exit'
+          }
+       }
+    }
 
+     stage('Checking Containers are deployed via Docker Swarm') {
+       steps {
+         script {
+           sh 'docker ps'
+          }
+       }
+    }
 
   }
 }
